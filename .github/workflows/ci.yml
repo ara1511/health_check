@@ -8,7 +8,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      RUN_PERF_TESTS: 'true'   # habilita el test de performance en CI
+      RUN_PERF_TESTS: 'true'  
     steps:
       - uses: actions/checkout@v4
 
