@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo fetch con x-api-key</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(140deg, #D4FF, #74D4FF);
+        color: #1f2937;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background:#77B;
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        padding: 60px 30px;
+        text-align: center;
+        max-width: 450px;
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+        color: #111827;
+      }
+
+      button {
+        background-color: #66BB6A;
+        color: #ffffff;
+        border: none;
+        padding: 10px 22px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+
+      button:hover {
+        background-color: #3b82f6;
+        transform: scale(1.03);
+      }
+
+      pre {
+        text-align: left;
+        background: #74D4FF;
+        padding: 12px;
+        border-radius: 10px;
+        margin-top: 18px;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        max-height: 280px;
+        color: #374151;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Ejemplo Fetch con x-api-key</h1>
+      <button onclick="llamarApi()">Llamar API</button>
+      <pre id="resultado">Aquí se mostrará la respuesta...</pre>
+    </div>
+
+    <script>
+      function llamarApi() {
+        fetch("http://127.0.0.1:8000/health_perf", {
+          method: "GET",
+          headers: {
+            "x-api-key": "servicio_api_key",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("resultado").textContent = JSON.stringify(
+              data,
+              null,
+              2
+            );
+          })
+          .catch((error) => {
+            document.getElementById("resultado").textContent =
+              "Error: " + error;
+          });
+      }
+    </script>
+  </body>
+</html>
