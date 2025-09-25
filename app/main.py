@@ -12,10 +12,10 @@ app = FastAPI()
 # Configuración de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # O especifica los dominios permitidos
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["x-api-key", "Content-Type"],  # Permite la cabecera personalizada
+    allow_headers=["x-api-key", "Content-Type"], 
 )
 
 @app.get("/")
