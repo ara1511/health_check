@@ -1,13 +1,16 @@
 # tests/test_health_perf.py
 import os
-import pytest
+import pytest  # ← PRIMERO
 from fastapi.testclient import TestClient
 from app.main import app
 
-client = TestClient(app)
+# Cargar variables de entorno si es necesario
+if os.path.exists(".env.local"):
+    from dotenv import load_dotenv
+    load_dotenv(".env.local")
 
-# Usa la misma API key que en tu .env o docker-compose.yml
-API_KEY = "tu-clave-secreta-aqui"
+client = TestClient(app)
+API_KEY = os.getenv("API_KEY", "no-api-key")
 
 RUN_PERF = os.getenv("RUN_PERF_TESTS", "false").lower() == "true"
 
@@ -17,7 +20,6 @@ def test_health_response_time_under_100ms():
     elapsed = resp.elapsed.total_seconds()
     assert elapsed < 0.1, f"Response took {elapsed:.3f}s which is >= 0.1s"
 
-# Nuevo test para /health_perf
 def test_health_perf_requires_valid_api_key():
     # Sin cabecera → 422
     resp = client.get("/health_perf")
