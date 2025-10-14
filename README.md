@@ -2,10 +2,10 @@
 
 <div align="center">
 
-![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge\&logo=fastapi\&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge\&logo=python\&logoColor=ffdd54)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge\&logo=docker\&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge\&logo=redis\&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
 
 **Health-Check & Logging Service** desarrollado con **FastAPI**, que registra cada solicitud en **Redis** y expone métricas en tiempo real con sistema de tokens JWT.
@@ -16,32 +16,32 @@
 
 ## 🌟 Características
 
-* ✅ **Health check** con timestamp y zona horaria (`/health`)
-* ✅ **Ping endpoint** para monitoreo simple (`/ping`)
-* ✅ **Rendimiento protegido** con API Key (`/health_perf`)
-* ✅ **Registro automático** en Redis de cada solicitud (IP, user-agent, timestamp, endpoint)
-* ✅ **Endpoint de auditoría**: `/get-responses` devuelve todos los logs almacenados
-* 🆕 **Sistema de tokens**: Generación y validación con middleware (`/generate-token`)
-* 🆕 **Limpieza de logs**: Endpoint para borrar todos los registros (`/clear-responses`)
-* 🆕 **Middleware de autenticación** con Bearer tokens
-* 🆕 **Interfaz HTML** de pruebas incluida (`test.html`)
-* ✅ **CORS configurado** con soporte para headers personalizados
-* ✅ Soporte para **Docker** y **desarrollo local**
-* ✅ Tests automatizados con **pytest**
+- ✅ **Health check** con timestamp y zona horaria (`/health`)
+- ✅ **Ping endpoint** para monitoreo simple (`/ping`)
+- ✅ **Rendimiento protegido** con API Key (`/health_perf`)
+- ✅ **Registro automático** en Redis de cada solicitud (IP, user-agent, timestamp, endpoint)
+- ✅ **Endpoint de auditoría**: `/get-responses` devuelve todos los logs almacenados
+- 🆕 **Sistema de tokens**: Generación y validación con middleware (`/generate-token`)
+- 🆕 **Limpieza de logs**: Endpoint para borrar todos los registros (`/clear-responses`)
+- 🆕 **Middleware de autenticación** con Bearer tokens
+- 🆕 **Interfaz HTML** de pruebas incluida (`test.html`)
+- ✅ **CORS configurado** con soporte para headers personalizados
+- ✅ Soporte para **Docker** y **desarrollo local**
+- ✅ Tests automatizados con **pytest**
 
 ---
 
 ## 📌 Endpoints Disponibles
 
-| Método   | Ruta               | Descripción                                | Requiere API Key | Requiere Token |
+|  Método  | Ruta               | Descripción                                | Requiere API Key | Requiere Token |
 | :------: | :----------------- | :----------------------------------------- | :--------------: | :------------: |
-|  `GET`   | `/`                | 🏠 Mensaje de bienvenida                   |         ❌        |       ❌       |
-|  `GET`   | `/health`          | 💓 Estado del servicio + registro en Redis |         ❌        |       ❌       |
-|  `GET`   | `/ping`            | 🏓 Respuesta "pong" + registro en Redis    |         ❌        |       ❌       |
-|  `GET`   | `/health_perf`     | ⚡ Métricas de rendimiento                  |         ✅        |       ❌       |
-|  `GET`   | `/get-responses`   | 📊 Lista de logs guardados en Redis        |         ❌        |       ❌       |
-|  `POST`  | `/generate-token`  | 🔐 Genera token JWT con expiración 1h      |         ❌        |       ❌       |
-| `DELETE` | `/clear-responses` | 🗑️ Elimina todos los logs de Redis          |         ❌        |       ❌       |
+|  `GET`   | `/`                | 🏠 Mensaje de bienvenida                   |        ❌        |       ❌       |
+|  `GET`   | `/health`          | 💓 Estado del servicio + registro en Redis |        ❌        |       ❌       |
+|  `GET`   | `/ping`            | 🏓 Respuesta "pong" + registro en Redis    |        ❌        |       ❌       |
+|  `GET`   | `/health_perf`     | ⚡ Métricas de rendimiento                 |        ✅        |       ❌       |
+|  `GET`   | `/get-responses`   | 📊 Lista de logs guardados en Redis        |        ❌        |       ❌       |
+|  `POST`  | `/generate-token`  | 🔐 Genera token JWT con expiración 1h      |        ❌        |       ❌       |
+| `DELETE` | `/clear-responses` | 🗑️ Elimina todos los logs de Redis         |        ❌        |       ❌       |
 
 ---
 
@@ -266,10 +266,10 @@ mi-servicio/
 
 ### 🆕 Nuevos Componentes
 
-* **`middleware/validate_token.py`**: Middleware para validar tokens Bearer almacenados en Redis
-* **`routes/generate_token.py`**: Generación de tokens UUID con expiración automática
-* **`routes/clear_responses.py`**: Limpieza masiva de logs almacenados en Redis
-* **`test.html`**: Interfaz web para probar endpoints con API keys y tokens
+- **`middleware/validate_token.py`**: Middleware para validar tokens Bearer almacenados en Redis
+- **`routes/generate_token.py`**: Generación de tokens UUID con expiración automática
+- **`routes/clear_responses.py`**: Limpieza masiva de logs almacenados en Redis
+- **`test.html`**: Interfaz web para probar endpoints con API keys y tokens
 
 ---
 
@@ -279,11 +279,11 @@ mi-servicio/
 
 El proyecto incluye un archivo `test.html` que puedes abrir en tu navegador para probar los endpoints de forma interactiva. La interfaz permite:
 
-* ✅ Probar `/health_perf` con API key
-* ✅ Generar tokens JWT
-* ✅ Validar tokens con middleware
-* ✅ Limpiar logs de Redis
-* ✅ Ver respuestas en formato JSON
+- ✅ Probar `/health_perf` con API key
+- ✅ Generar tokens JWT
+- ✅ Validar tokens con middleware
+- ✅ Limpiar logs de Redis
+- ✅ Ver respuestas en formato JSON
 
 ### Usando `curl` para probar
 
@@ -306,5 +306,3 @@ curl http://localhost:8000/get-responses
 Made with ❤️ using **FastAPI + Redis + Docker + JWT**
 
 ---
-
-
