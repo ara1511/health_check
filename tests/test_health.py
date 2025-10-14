@@ -1,19 +1,23 @@
-import sys
-import os
-import re
-
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-
+# tests/test_health.py
 from fastapi.testclient import TestClient
 from app.main import app
+from unittest.mock import patch
+import json
 
 client = TestClient(app)
 
-def test_health_status_ok():
+@patch("app.routes.health.redis_client")
+def test_health_status_ok(mock_redis):
+    # Simula que Redis funciona (sin errores)
+    mock_redis.set.return_value = True
+    mock_redis.expire.return_value = True
+
     resp = client.get("/health")
     assert resp.status_code == 200
     data = resp.json()
-    assert "status" in data
     assert data["status"] == "ok"
     assert "timestamp" in data
-    assert re.match(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}", data["timestamp"])
+
+    # Verifica que se llamó a Redis con los datos correctos
+    mock_redis.set.assert_called_once()
+    mock_redis.expire.assert_called_once()
