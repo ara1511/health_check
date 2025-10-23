@@ -1,14 +1,12 @@
-# .github/workflows/codeql-analysis.yml
-
 name: "CodeQL"
 
 on:
   push:
-    branches: [ "main", "develop" ]  # Ajusta según tus ramas protegidas
+    branches: [ "main", "develop" ]  
   pull_request:
     branches: [ "main", "develop" ]
   schedule:
-    - cron: '30 4 * * 6'  # Ejecución semanal los sábados a las 4:30 AM
+    - cron: '30 4 * * 6' 
 
 jobs:
   analyze:
@@ -33,8 +31,7 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        # Si necesitas configuraciones personalizadas, usa un archivo codeql-config.yml
-        # config-file: .github/codeql/codeql-config.yml
+    
 
     # Instala dependencias (opcional pero recomendado para mejor análisis)
     - name: Set up Python
