@@ -7,3 +7,4 @@ python-dotenv
 httpx
 redis
 pyjwt
+pytest-mock
