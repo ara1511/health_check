@@ -1,8 +1,7 @@
-
+# tests/test_health_perf.py
 import os
 import sys
 from unittest.mock import patch
-import pytest
 
 # 👇 MOCKEA redis.Redis ANTES de importar cualquier cosa de la app
 with patch("redis.Redis") as mock_redis_class:
