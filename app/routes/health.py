@@ -33,5 +33,5 @@ async def health_check(request: Request):
 
     return {
         "status": "ok",
-        "timestamp": timestamp
+        "timestamp": 
     }
